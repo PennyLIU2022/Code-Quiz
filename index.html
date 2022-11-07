@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width initial=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet", href="./asset/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="script", href="./asset/script.js">
+
+    <title>Coding Quiz</title>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <botton type="button" id="highscore" class="btn-light" onclick="ShowHighScore()">View high scores</botton>
+        </div>
+
+        <div>
+            <!-- home page -->
+            <div id="homepage">
+                <h2>Coding Quiz Challenge</h2>
+                <p>Try to answer the folloing code-related questions within the time limit.</p>
+                <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds</p>
+                <botton id="startQuiz" class="btn btn-primary" onclick="startTimer">Start Quiz</botton>
+            </div>
+
+           <!-- quiz page -->
+           <div id="quiz" class="quizpage">
+              <h2 id="questions">-</h2>
+              <div class="quizpageBody">
+                <div class="options">
+                    <button id="option1" type="button" class="btn btn-primary" onclick="checkAnswer()">112345678</button>
+                    <button id="option2" type="button" class="btn btn-primary" onclick="checkAnswer()">22345678</button>
+                    <button id="option3" type="button" class="btn btn-primary" onclick="checkAnswer()">3123456789</button>
+                    <button id="option4" type="button" class="btn btn-primary" onclick="checkAnswer()">4123489</button>
+                </div>
+              </div>
+
+              <hr/>
+              <div id="comments" class="comments"></div>
+            </div>
+
+
+            <!-- results page -->
+            <div id="results" class="input-group mb-3">
+                <h2 id="resultComments"></h2>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="score">@</span>
+                </div>
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic1">Enter initials:</span>
+                    <input id="initials" type="text" data-idx="" class="from-control" placeholder="Enter initials:">
+                </div>
+                <button id="submit" onclick="submit()">Submit</button>
+            </div>
+
+            <div id="ShowHighScore" class="input-group mb-3">
+                <h2>High scores</h2>
+                <ul id="scorelist" class="list"></ul>
+                <button id="goBack" onclick="goBack()">Go Back</button>
+                <button id="clearHighscore" onclick="clearHighscore()">Clear high scores</button>
+            </div>
+
+        </div>
+
+        <div>
+            <div id="timer">Time: 300</div>
+        </div>
+        
+    </div>
+</body>
+</html>
