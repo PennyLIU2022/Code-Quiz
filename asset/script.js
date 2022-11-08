@@ -14,7 +14,30 @@ function ShowHighScore(){
 
 // click the 'start quiz' button to trigger timer
 function startTimer(){
-    a
+    var timing = setInterval(timer, 1000);
+    document.getElementById("homepage").style.display = 'none';
+    document.getElementById("quiz").style.display = 'block';
+    showquiz();
+
+    function timer(){
+        score--;
+        document.getElementById("timer").textContent = `Time: ${score}`;
+        if(score<=0){
+            clearInterval(timing);
+            showresult();
+            document.getElementById("resultComments").textContent = `Time's up! Please enter your initials to show your score.`
+        } else if(idx>=questionArray.length){
+            clearInterval(timing);
+            showresult();
+            document.getElementById("resultComments").textContent = `Well done! Please enter your initials to show your score.`
+        }
+    }
+}
+
+function showresult(){
+    document.getElementById("results").style.display = 'block';
+    document.getElementById("quiz").style.display = 'none';
+    document.getElementById("score").textContent = `Score: ${score}`;
 }
 
 function checkAnswer(){
