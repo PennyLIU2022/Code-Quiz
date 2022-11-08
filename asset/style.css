@@ -17,11 +17,19 @@
     margin-left: 5%;
 }
 
-#homepage, #quiz, #results, #ShowHighScore{
-    width: 100%;
+#homepage, #results, #ShowHighScore{
+    width: 100vh;
     margin-top: 15vh;
     text-align: center;
     padding: 5%;
+}
+
+#quiz{
+    width: 150vh;
+    margin-top: 15vh;
+    text-align: left;
+    padding: 5%;
+    display: none;
 }
 
 #timer{
@@ -30,22 +38,30 @@
     align-items: center;
 }
 
-#quiz{
-    display: none;
-}
-
-.btn, button{
+#startQuiz, #submit, #goBack, #clearHighscore{
     display: block;
     margin-bottom: 2%;
     margin-top: 2%;
-    height: 2em;
+    height: 2.5em;
     width: 100%;
     color: white;
     background-color: darkblue;
+    text-align: center;
+}
+
+.btn{
+    display: block;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    height: 2.5em;
+    width: 15em;
+    color: white;
+    background-color: darkblue;
+    text-align: left;
 }
 
 #comments{
-    text-align: center;
+    text-align: left;
     font-size: 150%;
     font-weight: bold;
 }

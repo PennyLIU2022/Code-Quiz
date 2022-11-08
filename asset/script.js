@@ -1,4 +1,4 @@
-var score = 100;
+var score = 300;
 var questionArray = [
     {'question':'Commonly used data types Do Not Include:', 'options':{'1':'1. strings', '2':'2. booleans', '3': '3. alerts', '4':'4. numbers'}, 'correctAnswer':'3. alerts'},
     {'question':'The condition in an if/else statement is enclosed with _____.', 'options':{'1':'1. quotes', '2':'2. curly brackets', '3': '3. parenthesis', '4':'4. square brackets'}, 'correctAnswer':'3. parenthesis'},
@@ -7,10 +7,6 @@ var questionArray = [
     {'question':'A very useful tool used during development and debugging for printing content to the debugger is:', 'options':{'1':'1. JavaScript', '2':'2. terminal/bash', '3': '3. for loops', '4':'4. console.log'}, 'correctAnswer':'4. console.log'}
 ];
 var idx=0;
-
-function ShowHighScore(){
-    a
-}
 
 // click the 'start quiz' button to trigger timer
 function startTimer(){
@@ -25,11 +21,11 @@ function startTimer(){
         if(score<=0){
             clearInterval(timing);
             showresult();
-            document.getElementById("resultComments").textContent = `Time's up! Please enter your initials to show your score.`
+            document.getElementById("resultComments").textContent = `Time's up!`
         } else if(idx>=questionArray.length){
             clearInterval(timing);
             showresult();
-            document.getElementById("resultComments").textContent = `Well done! Please enter your initials to show your score.`
+            document.getElementById("resultComments").textContent = `All done!`
         }
     }
 }
@@ -37,21 +33,62 @@ function startTimer(){
 function showresult(){
     document.getElementById("results").style.display = 'block';
     document.getElementById("quiz").style.display = 'none';
-    document.getElementById("score").textContent = `Score: ${score}`;
+    document.getElementById("score").textContent = `Your final score is ${score}.`;
 }
 
+function showquiz(){
+    if(idx<questionArray.length){
+        document.getElementById("questions").textContent = questionArray[idx].question;
+        document.getElementById("option1").textContent = questionArray[idx].options[1];
+        document.getElementById("option2").textContent = questionArray[idx].options[2];
+        document.getElementById("option3").textContent = questionArray[idx].options[3];
+        document.getElementById("option4").textContent = questionArray[idx].options[4];
+    }
+}
+
+// check whether the correct answers are selected
 function checkAnswer(){
-    a
+    event.preventDefault();
+    var answer = event.target.textContent;
+    var comment = document.getElementById("comments");
+
+    if(answer == questionArray[idx].correctAnswer){
+        comment.textContent =`Correct!`;
+        idx++;
+        showquiz();
+    } else {
+        comment.textContent = `Wrong!`;
+        score -= 10;
+    }
 }
 
 function submit(){
-    a
+    event.preventDefault();
+    let int = document.getElementById("initials").value;
+    document.getElementById("scorelist").innerHTML += `<li class="list-item">${int}: ${score} </li>`;
+    ShowHighScore();
+}
+
+function ShowHighScore(){
+    document.getElementById("ShowHighScore").style.display='block';
+    document.getElementById("results").style.display='none';
+    document.getElementById("timer").style.display='none';
+    document.getElementById("homepage").style.display='none';
+    document.getElementById("quiz").style.display='none';
+    document.getElementById("highscore").style.display='none';
 }
 
 function goBack(){
-    a
+    idx = 0;
+    document.getElementById("timer").textContent=`Timer: 300`;
+    document.getElementById("ShowHighScore").style.display='none';
+    document.getElementById("results").style.display='none';
+    document.getElementById("timer").style.display='block';
+    document.getElementById("homepage").style.display='block';
+    document.getElementById("quiz").style.display='none';
+    document.getElementById("highscore").style.display='block';
 }
 
 function clearHighscore(){
-    a
+    document.getElementById("scorelist").innerHTML='';
 }
